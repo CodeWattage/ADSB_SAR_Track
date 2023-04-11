@@ -1,0 +1,25 @@
+{
+    "feeder_lat": 55.96190544390153,
+    "feeder_lon": -3.1908366485260364,
+    "radius_km": 20,
+    "watchlist": [
+      {
+        "icao24": "EZY95LQ",
+        "name": "Aircraft A"
+      },
+      {
+        "icao24": "400E00",
+        "name": "Aircraft B"
+      }
+    ],
+    "tweet_templates": {
+      "default": "Spotted {name} at {altitude} feet, flying over {neighborhood} at {speed} knots. {position}",
+      "123456": "Special template for Aircraft A: {name} at {altitude} feet, flying over {neighborhood} at {speed} knots. {position}"
+    },
+    "twitter_credentials": {
+      "consumer_key": "your_consumer_key",
+      "consumer_secret": "your_consumer_secret",
+      "access_token_key": "your_access_token_key",
+      "access_token_secret": "your_access_token_secret"
+    }
+  }
