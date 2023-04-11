@@ -2,7 +2,7 @@ import { takeScreenshot } from './src/lib/screenshot.js';
 
 async function testTakeScreenshot() {
   try {
-    const icao24 = '484CC3'; // Replace this with a valid ICAO24 code
+    const icao24 = '4CAFB3'; // Replace this with a valid ICAO24 code
     const screenshotDirectory = './screenshots';
 
     const imagePath = await takeScreenshot(icao24, screenshotDirectory);

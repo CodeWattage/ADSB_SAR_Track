@@ -17,8 +17,8 @@
       "access_token_secret": "your_access_token_secret"
     },
     "center_coordinates": {
-      "latitude": 51.5074,
-      "longitude": -0.1278
+      "latitude": 55.96192431824567,
+      "longitude": -3.190797543124287
     },
     "radius_km": 50
   }
