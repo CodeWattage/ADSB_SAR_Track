@@ -1,7 +1,6 @@
-const Twitter = require('twitter');
-const config = require('../../config.json');
-const client = new Twitter(config.twitter_credentials);
-const { reverseGeocode } = require('./geocoding');
+import Twitter from 'twitter';
+import config from '../../config.json';
+import { reverseGeocode } from './geocoding.js';
 
 async function tweetAircraftInfoWithImage(aircraft, imagePath) {
   const tweetText = await formatTweet(aircraft);
@@ -50,6 +49,4 @@ function getAircraftName(icao24) {
   return watchlistItem ? watchlistItem.name : icao24;
 }
 
-module.exports = {
-  tweetAircraftInfoWithImage
-};
+export { tweetAircraftInfoWithImage };

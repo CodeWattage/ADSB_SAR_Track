@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 async function getLocation(latitude, longitude) {
     const fetch = await import('node-fetch');
     return new Promise((resolve, reject) => {
@@ -14,6 +16,4 @@ async function getLocation(latitude, longitude) {
     });
   }
 
-  module.exports = {
-    getLocation,
-  };
+  export { reverseGeocode };

@@ -1,7 +1,7 @@
-const { Builder } = require('selenium-webdriver');
-const chrome = require('selenium-webdriver/chrome');
-const fs = require('fs');
-const path = require('path');
+import { Builder } from 'selenium-webdriver';
+import chrome from 'selenium-webdriver/chrome';
+import fs from 'fs';
+import path from 'path';
 
 async function takeScreenshot(icao24) {
   const url = `https://globe.adsbexchange.com/?icao=${icao24}`;
@@ -28,6 +28,4 @@ async function takeScreenshot(icao24) {
   }
 }
 
-module.exports = {
-  takeScreenshot
-};
+export { takeScreenshot };

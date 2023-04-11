@@ -1,6 +1,7 @@
-const geocoding = require('./lib/geocoding');
-const aircraft = require('./lib/aircraft');
-const twitter = require('./lib/twitter');
+import { getAircraftData, filterWatchlistAircraft, filterAircraftByDistance } from './lib/aircraft.js';
+import { tweetAircraftInfoWithImage } from './lib/twitter.js';
+import { takeScreenshot } from './lib/screenshot.js';
+
 
 async function main() {
   try {
