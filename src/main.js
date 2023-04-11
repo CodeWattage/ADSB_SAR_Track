@@ -1,4 +1,4 @@
-import { getAircraftData, filterWatchlistAircraft, filterAircraftByDistance } from './lib/aircraft.js';
+import { getAircraftData, filterAircraftByWatchlist, filterAircraftByDistance } from './lib/aircraft.js';
 import { tweetAircraftInfoWithImage } from './lib/twitter.js';
 import { takeScreenshot } from './lib/screenshot.js';
 import { getLocation } from './lib/geocoding.js';

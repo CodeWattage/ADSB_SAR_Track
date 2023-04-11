@@ -1,6 +1,7 @@
 import Twitter from 'twitter';
 import config from '../../config.json' assert { type: 'json' };
-import { reverseGeocode } from './geocoding.js';
+import { getLocation } from './geocoding.js';
+
 
 //Tweet aircraft info with image using Twitter API
 async function tweetAircraftInfoWithImage(aircraft, imagePath) {
