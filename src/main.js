@@ -1,20 +1,43 @@
-const config = require('../config.json');
-const { getAircraftData, filterWatchlistAircraft, filterAircraftByDistance } = require('./lib/aircraft');
-const { tweetAircraftInfoWithImage } = require('./lib/twitter');
-const { takeScreenshot } = require('./lib/screenshot');
+const geocoding = require('./lib/geocoding');
+const aircraft = require('./lib/aircraft');
+const twitter = require('./lib/twitter');
 
 async function main() {
-  const data = await getAircraftData();
-  if (data && data.length > 0) {
-    const watchlistAircraft = filterWatchlistAircraft(data);
-    const aircraftWithinRadius = filterAircraftByDistance(watchlistAircraft, config.feeder_lat, config.feeder_lon, config.radius_km);
-
-    for (const aircraft of aircraftWithinRadius) {
-      const screenshotPath = await takeScreenshot(aircraft.icao24);
-      await tweetAircraftInfoWithImage(aircraft, screenshotPath);
+  try {
+    const aircraftData = await aircraft.getAircraftData();
+    const filteredAircraftData = aircraftData
+      .filter((aircraft) => aircraft.flight && aircraft.flight !== '')
+      .map((aircraft) => ({
+        flight: aircraft.flight,
+        altitude: aircraft.altitude || 0,
+        lat: aircraft.lat || 0,
+        lon: aircraft.lon || 0,
+      }));
+    const promises = filteredAircraftData.map(async (aircraft) => {
+      const location = await geocoding.getLocation(aircraft.lat, aircraft.lon);
+      if (location) {
+        return {
+          flight: aircraft.flight,
+          altitude: aircraft.altitude,
+          location,
+        };
+      }
+      return null;
+    });
+    const results = await Promise.all(promises);
+    const tweets = results.filter((result) => result !== null).map((result) => {
+      const locationStr = `${result.location.city}, ${result.location.region}, ${result.location.country}`;
+      const tweet = `${result.flight} is currently at ${locationStr} and is flying at ${result.altitude} feet.`;
+      return tweet;
+    });
+    if (tweets.length > 0) {
+      console.log(`Sending ${tweets.length} tweets.`);
+      await twitter.sendTweets(tweets);
+    } else {
+      console.log('No tweets to send.');
     }
-  } else {
-    console.log('No aircraft data available.');
+  } catch (error) {
+    console.error(`Error fetching aircraft data: ${error.message}`);
   }
 }
 

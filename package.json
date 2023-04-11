@@ -1,18 +1,15 @@
 {
-  "name": "adsb_sar_track",
+  "name": "ADSB_SAR_Track",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A Node.js application to track aircraft and tweets in real-time",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/main.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "chromedriver": "^112.0.0",
-    "node-fetch": "^3.3.1",
-    "selenium-webdriver": "^4.8.2",
-    "twitter": "^1.7.1"
+    "dotenv": "^10.0.0",
+    "node-fetch": "^3.1.0",
+    "twit": "^3.1.1",
+    "node-geocoder": "^0.23.0"
   }
 }
