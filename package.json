@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "A Node.js application to track aircraft and tweets in real-time",
   "main": "main.js",
+  "type": "module",
+
   "scripts": {
     "start": "node src/main.js"
   },

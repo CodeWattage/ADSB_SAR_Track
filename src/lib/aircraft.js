@@ -9,5 +9,15 @@ async function getAircraftData() {
     }
   }
 
+  function filterAircraftByDistance(aircraftList, center, radiusKm) {
+    return aircraftList.filter((aircraft) => {
+      if (!aircraft.lat || !aircraft.lon) {
+        return false;
+      }
+
+      const distance = calculateDistance(center.latitude, center.longitude, aircraft.lat, aircraft.lon);
+      return distance <= radiusKm;
+    });
+  }
 
   export { getAircraftData, filterWatchlistAircraft, filterAircraftByDistance };
