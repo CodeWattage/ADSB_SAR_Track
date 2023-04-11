@@ -4,14 +4,14 @@
   "description": "A Node.js application to track aircraft and tweets in real-time",
   "main": "main.js",
   "type": "module",
-
   "scripts": {
     "start": "node src/main.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",
-    "node-fetch": "^3.1.0",
-    "twit": "^3.1.1",
-    "node-geocoder": "^0.23.0"
+    "node-fetch": "^3.3.1",
+    "node-geocoder": "4.2.0",
+    "selenium-webdriver": "^4.8.2",
+    "twit": "^1.1.20"
   }
 }

@@ -16,4 +16,4 @@ async function getLocation(latitude, longitude) {
     });
   }
 
-  export { reverseGeocode };
+  export { getLocation };
