@@ -14,7 +14,7 @@ async function main() {
         lon: aircraft.lon || 0,
       }));
     const promises = filteredAircraftData.map(async (aircraft) => {
-      const location = await geocoding.getLocation(aircraft.lat, aircraft.lon);
+        const location = await geocoding.getLocation(aircraft.latitude, aircraft.longitude);
       if (location) {
         return {
           flight: aircraft.flight,
